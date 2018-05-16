@@ -1,10 +1,15 @@
 <template>
-  <navbar src="static/ResinTrapTiny.png" alt="Brand logo" class="danger-color-dark" href="#" position="top">
-    <navbar-collapse  class="justify-content-end">
-      <navbar-nav >
-        <navbar-item href="#">Home</navbar-item>
-        <navbar-item href="#">Features</navbar-item>
-        <navbar-item href="#">Pricing</navbar-item>
+  <navbar src="static/ResinTrapTiny.png" alt="Brand logo" class="danger-color-dark" to="/" position="top">
+    <navbar-collapse>
+      <navbar-nav>
+        <router-link to="/"><navbar-item>Home</navbar-item></router-link>
+        <dropdown tag="li" class="nav-item">
+          <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
+          <dropdown-menu v-show="active[0]">
+            <dropdown-item><router-link to="/Login">Login</router-link></dropdown-item>
+            <dropdown-item><router-link to="/Account">Account</router-link></dropdown-item>
+          </dropdown-menu>
+        </dropdown>
       </navbar-nav>
     </navbar-collapse>
   </navbar>
@@ -15,16 +20,64 @@
   import 'mdbvue/build/css/mdb.css'
   import 'mdbvue/src/components/Waves.css'
   export default {
+    data() {
+      return {
+        active: {
+          0: false
+        }
+      };
+    },
     components: {
       Navbar,
       NavbarNav,
       NavbarItem,
-      NavbarCollapse
+      NavbarCollapse,
+      DropdownMenu,
+      DropdownItem,
+      DropdownToggle,
+      Dropdown
+    },
+    methods: {
+      toggleDropdown(index) {
+        for (let i = 0; i < Object.keys(this.active).length; i++) {
+          if (index !== i) {
+            this.active[i] = false;
+          }
+        }
+        this.active[index] = !this.active[index];
+      },
+      allDropdownsClose(target) {
+        for (let i = 0; i < Object.keys(this.active).length; i++) {
+          this.active[i] = false;
+        }
+      },
+      onClick(e) {
+        let parent = e.target;
+        let body = document.getElementsByTagName('body')[0];
+        while (parent !== body) {
+          if (parent.classList.contains('dropdown') || parent.classList.contains('btn-group')) {
+            return;
+          }
+          parent = parent.parentNode;
+        }
+        this.allDropdownsClose(e.target);
+      }
+    },
+    mounted() {
+      document.addEventListener('click', this.onClick);
+    },
+    destroyed() {
+      document.removeEventListener('click', this.onClick);
     }
   }
 </script>
 <style>
+  .dropdown-item:hover {
+    background-color: #CC0000!important;
+  }
   .nav-item .nav-link  {
     color: white!important;
   }
+  .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{color: white !important;}
+  .navbar .btn-group .dropdown-menu a:hover {   color: #000 !important; } .navbar .btn-group .dropdown-menu a:active {   color: #fff !important; }
 </style>

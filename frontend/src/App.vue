@@ -17,8 +17,16 @@
 </script>
 
 <style>
+  @font-face {
+    font-family: 'gsans';
+    src: url('./assets/GoogleSans-Regular.ttf') format('truetype'),
+    url('./assets/GoogleSans-Medium.ttf') format('truetype'),
+    url('./assets/GoogleSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'gsans', 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
