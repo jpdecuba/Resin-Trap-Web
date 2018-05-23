@@ -1,13 +1,13 @@
 <template>
-  <navbar src="static/ResinTrapTiny.png" alt="Brand logo" class="danger-color-dark" to="/" position="top">
+  <navbar src="static/ResinTrapTiny.png" alt="Brand logo" class="danger-color-dark" href="#/" position="top">
     <navbar-collapse>
-      <navbar-nav>
+      <navbar-nav right>
         <router-link to="/"><navbar-item>Home</navbar-item></router-link>
         <dropdown tag="li" class="nav-item">
           <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
-          <dropdown-menu v-show="active[0]">
-            <dropdown-item><router-link to="/Login">Login</router-link></dropdown-item>
-            <dropdown-item><router-link to="/Account">Account</router-link></dropdown-item>
+          <dropdown-menu right v-show="active[0]">
+            <dropdown-item>Login<router-link to="/Login"></router-link></dropdown-item>
+            <dropdown-item>Account<router-link to="/Account"></router-link></dropdown-item>
           </dropdown-menu>
         </dropdown>
       </navbar-nav>
@@ -79,5 +79,11 @@
     color: white!important;
   }
   .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover{color: white !important;}
-  .navbar .btn-group .dropdown-menu a:hover {   color: #000 !important; } .navbar .btn-group .dropdown-menu a:active {   color: #fff !important; }
+  .nav-item {
+    border-radius: 20px;
+    background-color: #CC0000;
+    margin: 5px;
+    /*box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);*/
+  }
+
 </style>
