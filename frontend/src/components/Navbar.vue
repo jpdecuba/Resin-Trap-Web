@@ -6,7 +6,7 @@
         <dropdown tag="li" class="nav-item">
           <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
           <dropdown-menu right v-show="active[0]">
-            <dropdown-item>Login<router-link to="/Login"></router-link></dropdown-item>
+            <router-link class="dropdown-item" to="/Login">Login</router-link>
             <dropdown-item>Account<router-link to="/Account"></router-link></dropdown-item>
           </dropdown-menu>
         </dropdown>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import {Navbar, NavbarNav, NavbarItem, Dropdown, DropdownItem, DropdownMenu,DropdownToggle, NavbarCollapse} from 'mdbvue';
+  import {Navbar, NavbarNav, NavbarItem, Dropdown, DropdownItem, DropdownMenu,DropdownToggle, NavbarCollapse, Btn, BtnGroup } from 'mdbvue';
   import 'mdbvue/build/css/mdb.css'
   import 'mdbvue/src/components/Waves.css'
   export default {
@@ -35,7 +35,9 @@
       DropdownMenu,
       DropdownItem,
       DropdownToggle,
-      Dropdown
+      Dropdown,
+      Btn,
+      BtnGroup
     },
     methods: {
       toggleDropdown(index) {
