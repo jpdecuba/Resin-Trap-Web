@@ -7,14 +7,14 @@
       <row>
         <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
-      <btn class="z-depth-5" color="red"  @click="Login()">Click Me!</btn>
-       <div v-if="showResponse"><h6>User created: {{ response }}</h6></div>
+      <btn class="z-depth-5" color="red"  @click="login()">Click Me!</btn>
+       <div ev-if="showRespons"><h1>User created: {{ response }}</h1></div>
     </container>
   </div>
 </template>
 
 <script>
-  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, MdInput} from 'mdbvue';
+  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, MdInput} from 'mdbvue'
   import {AXIOS} from './http-common'
 
   export default {
@@ -26,26 +26,27 @@
     data () {
           return {
             response: [],
+            showResponse: false,
             user: {
-              Username: '',
-              Password: '',
+              username: '',
+              password: '',
               id: 0
             }
           }
   },
 
    methods: {
-    Login () {
-       var params = new URLSearchParams()
-              params.append('firstName', this.user.firstName)
-              params.append('lastName', this.user.lastName)
-              AXIOS.post(`/login`, params)
-                .then(response => {
-                                  // JSON responses are automatically parsed.
-                                  this.response = response.data
-                                  console.log(response.data)
-                                  this.showResponse = true
-                                })
+    login () {
+      var params = new URLSearchParams()
+      params.append('username', this.user.username)
+      params.append('password', this.user.password)
+      AXIOS.post(`/Login`, params)
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.response = response.data
+          console.log(response.data)
+          this.showResponse = true
+        })
     }
    }
   }
