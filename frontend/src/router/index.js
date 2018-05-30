@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import PageNotFound from '@/components/NotFound'
 import Login from '@/components/Login'
+import Account from '@/components/Account'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/Hello',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/Account',
+      name: 'Account',
+      component: Account
     },
     {
       path: '/Login',
