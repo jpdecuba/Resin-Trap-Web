@@ -1,14 +1,18 @@
 <template>
   <div class="Login">
     <container>
-      <row>
-        <md-input v-model="user.UserName" label="Username" icon="User" Placeholder="Username"/>
+      <row class="align-items-center justify-content-center">
+        <column md="3"></column>
+        <column md="6">
+          <md-input v-model="user.UserName" label="Username" icon="User" Placeholder="Username"/>
+        </column>
+        <column md="3"></column>
       </row>
-      <row>
-        <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
+      <row class="test" md="8">
+          <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
       <btn class="z-depth-5" color="red"  @click="login()">Click Me!</btn>
-       <div ev-if="showRespons"><h1>User created: {{ response }}</h1></div>
+       <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
     </container>
   </div>
 </template>
