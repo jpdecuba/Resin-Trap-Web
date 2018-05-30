@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class AccountController {
 
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	@RequestMapping(path = "/Login", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public @ResponseBody String addNewUser (@RequestParam String Username, @RequestParam String Password) {
-		return Username + " " + Password;
+	public @ResponseBody String addNewUser (@RequestParam String username, @RequestParam String password) {
+		return username + " " + password;
 	}
 }
