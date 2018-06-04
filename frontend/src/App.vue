@@ -2,6 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <router-view/>
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -30,6 +31,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 0px;
+  }
+  .footer {
+    margin-top: 50px;
+    height: 50px;
+    width: 100%;
+    background-color: #cc0000;
   }
 </style>

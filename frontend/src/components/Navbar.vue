@@ -7,7 +7,7 @@
           <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
           <dropdown-menu right v-show="active[0]">
             <router-link class="dropdown-item" to="/Login">Login</router-link>
-            <dropdown-item>Account<router-link to="/Account"></router-link></dropdown-item>
+            <router-link class="dropdown-item" to="/Account">Account</router-link>
           </dropdown-menu>
         </dropdown>
       </navbar-nav>
