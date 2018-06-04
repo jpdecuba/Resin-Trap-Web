@@ -4,12 +4,12 @@
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
-          <md-input v-model="user.UserName" label="Username" icon="User" Placeholder="Username"/>
+          <md-input v-model="user.username" label="Username" icon="User" Placeholder="Username"/>
         </column>
         <column md="3"></column>
       </row>
       <row class="test" md="8">
-          <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
+          <md-input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
       <btn class="z-depth-5" color="red"  @click.native="login()">Click Me!</btn>
        <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
@@ -51,6 +51,7 @@
           console.log(response.data)
           this.showResponse = true
         })
+     // console.log('hello')
     }
    }
   }
