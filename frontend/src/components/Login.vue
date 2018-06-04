@@ -4,16 +4,17 @@
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
-          TEST VALUE: {{test.value}}
-          <MdInput v-model="test.value" label="Username" icon="User" Placeholder="Username"/>
+          <input v-model="user.username" label="Username" icon="User" Placeholder="Username"/>
         </column>
         <column md="3"></column>
       </row>
       <row class="test" md="8">
-          <md-input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password"/>
+        <input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
-      <btn class="z-depth-5" color="red"  @click.native="login()">Click Me!</btn>
-       <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
+      <btn class="z-depth-5" color="red" @click.native="login()">Click Me!</btn>
+      <div class="alert alert-danger" v-if="error">
+        <p>{{ error }}</p>
+      </div>
     </container>
   </div>
 </template>
@@ -21,7 +22,7 @@
 <script>
 
   import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, MdInput} from 'mdbvue'
-  import {AXIOS} from './http-common'
+  import auth from '../auth'
 
   export default {
     name: 'Login',
@@ -29,43 +30,26 @@
       Container,
       Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle, MdInput
     },
-    data () {
-          return {
-            test: {
-              value: '123'
-            },
-            response: [],
-            showResponse: false,
-            user: {
-              username: '',
-              password: '',
-              id: 0
-            }
-          }
-  },
-
-   methods: {
-    login () {
-      var params = new URLSearchParams();
-      // this.user.username = username;
-      // this.user.password = password;
-      var userdata = {
-        username: this.user.username,
-        password: this.user.password
+    data() {
+      return {
+        response: [],
+        showResponse: false,
+        user: {
+          username: '',
+          password: '',
+          id: 0
+        },
+        error: '',
+        result: false
       }
-      console.log(userdata)
-      // params.append('username', this.user.username);
-      // params.append('password', this.user.password);
-      // console.log(username);
-      // AXIOS.post(`/inlog`, userdata)
-      //   .then(response => {
-      //     // JSON responses are automatically parsed.
-      //     this.response = response.data;
-      //     console.log(response.data);
-      //     this.showResponse = true
-      //   })
     }
-   }
+    ,
+
+    methods: {
+      login() {
+        auth.login(this, this.user.username, this.user.password)
+      }
+    }
   }
 </script>
 
@@ -101,7 +85,7 @@
     width: 70%;
     margin: auto;
     alignment: left;
-    list-style-type:none;
+    list-style-type: none;
     padding-left: 0pt;
   }
 

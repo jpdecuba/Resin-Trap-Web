@@ -2,17 +2,18 @@
   <div id="app">
     <navbar></navbar>
     <router-view/>
-    <div class="footer"></div>
+    <footer class="page-footer font-small red pt-4 mt-4"></footer>
   </div>
 </template>
 
 <script>
   import Navbar from './components/Navbar'
+  import {Footer} from 'mdbvue';
 
   export default {
     name: 'App',
     components: {
-      Navbar
+      Navbar, Footer
     }
   }
 </script>
@@ -33,10 +34,7 @@
     text-align: center;
     margin-top: 0px;
   }
-  .footer {
-    margin-top: 50px;
-    height: 50px;
-    width: 100%;
+  .page-footer {
     background-color: #cc0000;
   }
 </style>
