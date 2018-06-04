@@ -11,7 +11,7 @@
       <row class="test" md="8">
           <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
-      <btn class="z-depth-5" color="red"  @click="login()">Click Me!</btn>
+      <btn class="z-depth-5" color="red"  @click.native="login()">Click Me!</btn>
        <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
     </container>
   </div>
