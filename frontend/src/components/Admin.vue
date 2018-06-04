@@ -2,37 +2,28 @@
   <div class="home">
     <container>
       <row>
-        <column md="2">
-          <!--<card>-->
-          <!--<card-img :src="require('../assets/chart.jpg')" alt="Card image cap" waves></card-img>-->
-          <!--<card-body class="text-center">-->
-          <!--<card-title><strong>Resin Trap</strong></card-title>-->
-          <!--<hr/>-->
-          <!--<card-text>Resin Trap is a user-friendly application that lets you setup your own honeypot to better-->
-          <!--secure your network.-->
-          <!--</card-text>-->
-          <!--</card-body>-->
-          <!--</card>-->
-        </column>
-        <column class="test" md="8">
-
-        </column>
-        <column md="2">
+        <column>
+          <line-chart id="lineChart" :width="600" :height="300"></line-chart>
         </column>
       </row>
-      <!--features and users (home, small business, big business)-->
+      <row>
+        <column>
+          <bar-chart id="barChart" :width="600" :height="300"></bar-chart>
+        </column>
+      </row>
     </container>
   </div>
 </template>
 
 <script>
-  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle} from 'mdbvue';
+  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, LineChart, BarChart} from 'mdbvue';
 
   export default {
     name: 'Home',
     components: {
       Container,
-      Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle
+      Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle,
+      LineChart, BarChart
     }
   }
 </script>
