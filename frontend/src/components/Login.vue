@@ -15,15 +15,13 @@
         </column>
         <column md="3"></column>
       </row>
-      <btn class="z-depth-5" color="red" @click.native="login()">Click Me!</btn>
-      <div class="alert alert-danger" v-if="error">
-        <p>{{ error }}</p>
-      </div>
         <btn class="z-depth-5" color="red"  @click.native="login()">Login</btn>
       <router-link to="/Register">
         <btn class="z-depth-5" color="red"  href="/Register">Register</btn>
       </router-link>
-       <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
+      <div class="alert alert-danger" v-if="error">
+        <p>{{ error }}</p>
+      </div>
     </container>
   </div>
 </template>

@@ -23,7 +23,7 @@ export default {
           this.user.authenticated = true
           router.push('/')
         } else if (!response.data) {
-          context.error = 'nope wtf'
+          context.error = 'Username/Password incorrect!'
         }
       })
   },
