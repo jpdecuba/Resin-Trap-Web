@@ -3,13 +3,13 @@
     <container>
       <row>Key: <label id="keylabel">[keylabel]</label></row>
       <row>Emails:<br> <md-textarea id="emailtextarea"></md-textarea></row>
-      <row><btn id="deletebtn">Delete</btn></row>
+      <row><btn id="deletebtn" class="z-depth-5" color="red"  @click.native="deleteEmail()">Delete</btn></row>
       <row class="align-items-center">
         <column ><md-input id="emailinput">Email</md-input></column>
-        <column className="align-self-center"><btn id="addbtn">ADD</btn></column>
+        <column className="align-self-center"><btn id="addbtn" class="z-depth-5" color="red"  @click.native="addEmail()">ADD</btn></column>
       </row>
       <row>
-        <btn id="changepassbtn">Change Password</btn>
+        <btn id="changepassbtn" class="z-depth-5" color="red"  @click.native="changePass()">Change Password</btn>
       </row>
       <!--features and users (home, small business, big business)-->
     </container>
