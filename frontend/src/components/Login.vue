@@ -1,15 +1,16 @@
 <template>
-  <div class="Login">
+  <div class="Login" style="margin-top: 70px">
     <container>
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
-          <md-input v-model="user.UserName" label="Username" icon="User" Placeholder="Username"/>
+          TEST VALUE: {{test.value}}
+          <MdInput v-model="test.value" label="Username" icon="User" Placeholder="Username"/>
         </column>
         <column md="3"></column>
       </row>
       <row class="test" md="8">
-          <md-input v-model="user.Password" type="password" label="Password" icon="Key" Placeholder="Password"/>
+          <md-input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password"/>
       </row>
       <btn class="z-depth-5" color="red"  @click.native="login()">Click Me!</btn>
        <div v-if="showResponse"><h1>User created: {{ response }}</h1></div>
@@ -18,6 +19,7 @@
 </template>
 
 <script>
+
   import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, MdInput} from 'mdbvue'
   import {AXIOS} from './http-common'
 
@@ -29,6 +31,9 @@
     },
     data () {
           return {
+            test: {
+              value: '123'
+            },
             response: [],
             showResponse: false,
             user: {
@@ -41,16 +46,24 @@
 
    methods: {
     login () {
-      var params = new URLSearchParams()
-      params.append('username', this.user.username)
-      params.append('password', this.user.password)
-      AXIOS.post(`/Login`, params)
-        .then(response => {
-          // JSON responses are automatically parsed.
-          this.response = response.data
-          console.log(response.data)
-          this.showResponse = true
-        })
+      var params = new URLSearchParams();
+      // this.user.username = username;
+      // this.user.password = password;
+      var userdata = {
+        username: this.user.username,
+        password: this.user.password
+      }
+      console.log(userdata)
+      // params.append('username', this.user.username);
+      // params.append('password', this.user.password);
+      // console.log(username);
+      // AXIOS.post(`/inlog`, userdata)
+      //   .then(response => {
+      //     // JSON responses are automatically parsed.
+      //     this.response = response.data;
+      //     console.log(response.data);
+      //     this.showResponse = true
+      //   })
     }
    }
   }
