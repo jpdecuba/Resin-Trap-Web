@@ -25,9 +25,7 @@ export default {
         } else if (!response.data) {
           context.error = 'nope wtf'
         }
-      }).error((err) => {
-      context.error = err
-    })
+      })
   },
 
   signup(context, creds, redirect) {

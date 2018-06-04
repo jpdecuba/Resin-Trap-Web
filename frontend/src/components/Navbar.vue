@@ -6,8 +6,10 @@
         <dropdown tag="li" class="nav-item">
           <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
           <dropdown-menu right v-show="active[0]">
-            <router-link class="dropdown-item" to="/Login">Login</router-link>
-            <router-link class="dropdown-item" to="/Account">Account</router-link>
+            <router-link class="dropdown-item" v-if="!user.authenticated" to="/Login">Login</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" to="/Login">Logout</router-link>
+            <router-link class="dropdown-item" v-if="!user.authenticated" to="/Register">Register</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" to="/Account">Account</router-link>
           </dropdown-menu>
         </dropdown>
       </navbar-nav>
@@ -19,6 +21,7 @@
   import {Navbar, NavbarNav, NavbarItem, Dropdown, DropdownItem, DropdownMenu,DropdownToggle, NavbarCollapse, Btn, BtnGroup } from 'mdbvue';
   import 'mdbvue/build/css/mdb.css'
   import 'mdbvue/src/components/Waves.css'
+  import auth from '../auth'
   export default {
     data() {
       return {
