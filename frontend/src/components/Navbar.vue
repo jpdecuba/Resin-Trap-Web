@@ -27,7 +27,8 @@
       return {
         active: {
           0: false
-        }
+        },
+        user: auth.user
       };
     },
     components: {
@@ -66,6 +67,9 @@
           parent = parent.parentNode;
         }
         this.allDropdownsClose(e.target);
+      },
+      logout() {
+        auth.logout()
       }
     },
     mounted() {
