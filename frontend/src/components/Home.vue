@@ -1,48 +1,141 @@
 <template>
   <div class="home">
+    <div class="head">
+      <img class="headimg " :src="require('../assets/chart2.jpg')" alt="Responsive image">
+      <div class="headbody rgba-black-strong py-5 px-4">
+        <div class="hbody">
+          <h1>Resin Trap</h1>
+          <p>Resin Trap is a user-friendly honeypot which allows you to secure your network from hackers. Day by day
+            is the cyber criminality becoming more frequent. We have build this application in hope that we can better
+            protect our clients data.</p>
+          <btn class="download" color="danger">Download
+            <fa icon="download"/>
+          </btn>
+        </div>
+      </div>
+    </div>
+
     <container>
+      <row style="margin: 50px">
+        <p>Resin Trap was build so that anyone can use it. We have build a user-friendly interface with clear
+          instructions on how to use it. The application has 4 modes to choose from depending on your network. These
+          modes have different services that are turned on to be able to make it look like an important server.</p>
+      </row>
       <row>
-        <column md="2">
-          <!--<card>-->
-          <!--<card-img :src="require('../assets/chart.jpg')" alt="Card image cap" waves></card-img>-->
-          <!--<card-body class="text-center">-->
-          <!--<card-title><strong>Resin Trap</strong></card-title>-->
-          <!--<hr/>-->
-          <!--<card-text>Resin Trap is a user-friendly application that lets you setup your own honeypot to better-->
-          <!--secure your network.-->
-          <!--</card-text>-->
-          <!--</card-body>-->
-          <!--</card>-->
-        </column>
-        <column class="test" md="8">
-          <card class="card-image"
-                style="background-image: url('/static/chart.jpg'); background-size: 125%; border-radius: 20px; border-color: transparent">
-            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4" style="border-radius: 20px">
-              <div>
-                <h5 class="red-text">
-                  <fa icon="desktop"/>
-                </h5>
-                <card-title tag="h3" class="pt-2"><strong>Resin Trap</strong></card-title>
-                <p>Resin Trap is a user-friendly application that lets you setup your own honeypot to better secure
-                  your network. Resin Trap is a simple solution which can be used almost anyone. The application has many features including:</p>
-                <ul class="ulist">
-                  <li class="feat">Creating a fake active service</li>
-                  <li class="feat">Notifications when someone has connected to the honeypot</li>
-                  <li class="feat">A log so you can see everything when a user has connected</li>
-                  <li class="feat">And more!</li>
-                </ul>
-                <!--<btn color="red">-->
-                  <!--<fa icon="clone left"/>-->
-                  <!--View project-->
-                <!--</btn>-->
-              </div>
-            </div>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="home" size="2x"/>
+              </h5>
+              <card-title>Home</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
           </card>
         </column>
-        <column md="2">
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="building-o" size="2x"/>
+              </h5>
+              <card-title>Small Business</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="building" size="2x"/>
+              </h5>
+              <card-title>Big Business</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="hourglass-3" size="2x"/>
+              </h5>
+              <card-title>Express</card-title>
+              <card-text>Express mode allows the application to run a scan on the network it's connected to. Depending
+                on your network the applcation will automatically choose one of the other 3 modes.
+              </card-text>
+            </card-body>
+          </card>
         </column>
       </row>
-      <!--features and users (home, small business, big business)-->
+      <row style="margin: 50px;">
+        <div class="text-center" style="width: 100%">
+          <h3>Features</h3>
+          <p>Resin Trap has a variety of features that... put something here about features</p>
+        </div>
+      </row>
+
+      <row>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="server" size="2x"/>
+              </h5>
+              <card-title>Fake Services</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="bell" size="2x"/>
+              </h5>
+              <card-title>Notifications</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="database" size="2x"/>
+              </h5>
+              <card-title>Logs</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+        <column md="3" sm="12" class="p-3">
+          <card class="test">
+            <card-body>
+              <h5 class="red-text">
+                <fa icon="question" size="2x"/>
+              </h5>
+              <card-title>Something else</card-title>
+              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
+                content.
+              </card-text>
+            </card-body>
+          </card>
+        </column>
+      </row>
     </container>
   </div>
 </template>
@@ -61,38 +154,53 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
+  .test {
+    height: 100%;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+  .headimg {
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
   }
 
-  li {
-    display: inline-block;
-    margin: 0 10px;
+  .head {
+    position: relative;
   }
 
-  .card-img {
-    height: 500px;
+  .headbody {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
-  .feat {
-    list-style-type: disc;
-    display: list-item;
-    alignment: left;
-    padding-left: 0pt;
-    list-style-position: inside;
+  .hbody {
+    position: absolute;
+    top: 45%;
+    left: 25%;
+    width: 50%;
+    color: white;
   }
 
-  .ulist {
-    width: 70%;
-    margin: auto;
-    alignment: left;
-    list-style-type:none;
-    padding-left: 0pt;
+  @media only screen and (max-width: 480px) {
+    .hbody {
+      left: 0;
+      top: 75px;
+      height: 100%;
+      width: 100%;
+    }
+
+    .headimg {
+      content: url("../assets/chart.jpg");
+      height: 100%;
+      margin-top: 55px;
+    }
+
+    .download {
+      display: none;
+    }
   }
 
 </style>
