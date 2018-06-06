@@ -1,5 +1,5 @@
 <template>
-  <div class="Login" style="margin-top: 70px">
+  <div class="Login">
     <container>
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
@@ -62,38 +62,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  .card-img {
-    height: 500px;
-  }
-
-  .feat {
-    list-style-type: disc;
-    display: list-item;
-    alignment: left;
-    padding-left: 0pt;
-    list-style-position: inside;
-  }
-
-  .ulist {
-    width: 70%;
-    margin: auto;
-    alignment: left;
-    list-style-type: none;
-    padding-left: 0pt;
+  .Login {
+    margin-top: 16%;
+    min-height: 100%;
   }
 
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <navbar></navbar>
     <router-view/>
-    <footer class="page-footer font-small red pt-4 mt-4"></footer>
+    <footer class="page-footer foot font-small red pt-4 mt-4"></footer>
   </div>
 </template>
 
@@ -34,7 +34,16 @@
     text-align: center;
     margin-top: 0px;
   }
-  .page-footer {
-    background-color: #cc0000;
+  .foot {
+    background-color: #CC0000 !important;
+    bottom:0;
+    position: fixed;
+    width: 100%;
+  }
+  @media only screen and (max-width: 480px) {
+    .foot {
+      position: static;
+      display: none;
+    }
   }
 </style>
