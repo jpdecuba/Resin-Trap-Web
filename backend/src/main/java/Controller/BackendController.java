@@ -24,4 +24,12 @@ public class BackendController {
 		boolean check = (user != null);
 		return check;
 	}
+
+	@RequestMapping(path = "/register", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public @ResponseBody Boolean registerNewUser (@RequestBody User usr) {
+		boolean create = client.Register(usr);
+		return create;
+	}
+	
 }
