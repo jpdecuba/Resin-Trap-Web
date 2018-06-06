@@ -5,7 +5,7 @@
       <row>Emails:<br> <md-textarea id="emailtextarea"></md-textarea></row>
       <row><btn id="deletebtn" class="z-depth-5" color="red"  @click.native="deleteEmail()">Delete</btn></row>
       <row class="align-items-center">
-        <column ><md-input id="emailinput">Email</md-input></column>
+        <column ><md-input id="emailinput" Placeholder="Password"></md-input></column>
         <column className="align-self-center"><btn id="addbtn" class="z-depth-5" color="red"  @click.native="addEmail()">ADD</btn></column>
       </row>
       <row>
