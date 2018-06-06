@@ -29,8 +29,7 @@
                 <fa icon="home" size="2x"/>
               </h5>
               <card-title>Home</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>A mode designed for personal use at home.
               </card-text>
             </card-body>
           </card>
@@ -42,8 +41,7 @@
                 <fa icon="building-o" size="2x"/>
               </h5>
               <card-title>Small Business</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>A mode designed for small businesses.
               </card-text>
             </card-body>
           </card>
@@ -55,8 +53,7 @@
                 <fa icon="building" size="2x"/>
               </h5>
               <card-title>Big Business</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>A mode designed for big businesses.
               </card-text>
             </card-body>
           </card>
@@ -78,7 +75,7 @@
       <row style="margin: 50px;">
         <div class="text-center" style="width: 100%">
           <h3>Features</h3>
-          <p>Resin Trap has a variety of features that... put something here about features</p>
+          <p>Resin Trap has a variety of features that will help you easily protect your network.</p>
         </div>
       </row>
 
@@ -90,8 +87,7 @@
                 <fa icon="server" size="2x"/>
               </h5>
               <card-title>Fake Services</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>Trick intruders into exposing themselves by laying traps in the form of fake data.
               </card-text>
             </card-body>
           </card>
@@ -103,8 +99,7 @@
                 <fa icon="bell" size="2x"/>
               </h5>
               <card-title>Notifications</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>Be notified when an intruder is found on your network.
               </card-text>
             </card-body>
           </card>
@@ -116,8 +111,7 @@
                 <fa icon="database" size="2x"/>
               </h5>
               <card-title>Logs</card-title>
-              <card-text>Some quick example text to build on the card title and make up the bulk of the card's
-                content.
+              <card-text>Keep extensive records of what happens to your network.
               </card-text>
             </card-body>
           </card>
