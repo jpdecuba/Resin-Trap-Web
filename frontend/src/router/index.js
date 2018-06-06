@@ -6,6 +6,7 @@ import PageNotFound from '@/components/NotFound'
 import Login from '@/components/Login'
 import Account from '@/components/Account'
 import Admin from '@/components/Admin'
+import Register from '@/components/Register'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/Admin',
       name: 'Admin',
       component: Admin
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: Register
     },
     { path: "*", component: PageNotFound }
   ]
