@@ -54,7 +54,12 @@
 
     methods: {
       login() {
-        auth.login(this, this.user.username, this.user.password)
+        if (this.user.username !== '' && this.user.password !== '') {
+          this.error = ''
+          auth.login(this, this.user.username, this.user.password)
+        } else {
+          this.error = 'Please fill all fields'
+        }
       }
     }
   }
