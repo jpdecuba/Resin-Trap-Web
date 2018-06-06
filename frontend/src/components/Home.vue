@@ -152,6 +152,10 @@
     height: 100%;
   }
 
+  .home {
+    margin-bottom: 50px;
+  }
+
   .headimg {
     width: 100%;
     height: auto;
