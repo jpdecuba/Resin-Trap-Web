@@ -25,7 +25,7 @@
         <column class="text-left"><MdInput v-model="user.Code" label="Code" icon="group"/></column>
       </row>
 
-      <row>
+      <row class="mb-5">
         <column ><btn @click.native="Register()" color="red">Cancel</btn></column>
         <column ><btn @click.native="Register()" color="red">Register</btn></column>
       </row>
