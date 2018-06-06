@@ -72,4 +72,8 @@
     min-height: 100%;
   }
 
+  .btn {
+    border-radius: 25px;
+  }
+
 </style>

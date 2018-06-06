@@ -2,37 +2,32 @@
   <div class="Register">
     <container style="margin-top: 10%; padding-left: 20%; padding-right: 20%;">
       <row>
-        <column><MdInput type="checkbox" id="checkbox1" label="Admin" /></column>
+        <column class="text-left"><MdInput type="checkbox" id="checkbox1" label="Admin" /></column>
       </row>
 
       <row>
-        <column col="1"><fa icon="user-circle"/></column>
-        <column><MdInput v-model="user.Username" label="Username" placeholder="Username"/></column>
+        <column class="text-left"><MdInput v-model="user.Username" label="Username" icon="user-circle" Placeholder="Username"/></column>
       </row>
 
       <row>
-        <column col="1"><fa icon="envelope"/></column>
-        <column><MdInput v-model="user.Email" label="E-mail" placeholder="E-mail"/></column>
+        <column class="text-left"><MdInput v-model="user.Email" label="E-mail" icon="envelope"/></column>
       </row>
 
       <row>
-        <column col="1"><fa icon="lock"/></column>
-        <column><MdInput v-model="user.Password" type="password" label="Password" placeholder="Password"/></column>
+        <column class="text-left"><MdInput v-model="user.Password" type="password" label="Password" icon="lock"/></column>
       </row>
 
       <row>
-        <column col="1"><fa icon="lock"/></column>
-        <column><MdInput v-model="user.PasswordConfirm" type="password" label="Confirm Password" placeholder="Password"/></column>
+        <column class="text-left"><MdInput v-model="user.PasswordConfirm" type="password" label="Confirm Password" icon="lock"/></column>
       </row>
 
       <row>
-        <column col="1"><fa icon="group"/></column>
-        <column><MdInput v-model="user.Code" label="Code" placeholder="Code"/></column>
+        <column class="text-left"><MdInput v-model="user.Code" label="Code" icon="group"/></column>
       </row>
 
       <row>
-        <column ><btn @click.native="Register()" color="danger">Cancel</btn></column>
-        <column ><btn @click.native="Register()" color="danger">Register</btn></column>
+        <column ><btn @click.native="Register()" color="red">Cancel</btn></column>
+        <column ><btn @click.native="Register()" color="red">Register</btn></column>
       </row>
     </container>
   </div>
@@ -132,4 +127,8 @@
     }
   }
 </script>
-
+<style scoped>
+  .btn {
+    border-radius: 25px;
+  }
+</style>
