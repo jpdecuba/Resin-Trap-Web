@@ -1,15 +1,46 @@
 <template>
-  <div class="home">
+  <div class="account">
     <container>
-      <row>Key: <label id="keylabel">[keylabel]</label></row>
-      <row>Emails:<br> <md-textarea id="emailtextarea"></md-textarea></row>
-      <row><btn id="deletebtn" class="z-depth-5" color="red"  @click.native="deleteEmail()">Delete</btn></row>
-      <row class="align-items-center">
-        <column ><md-input id="emailinput" Placeholder="Password"></md-input></column>
-        <column className="align-self-center"><btn id="addbtn" class="z-depth-5" color="red"  @click.native="addEmail()">ADD</btn></column>
+      <row>
+        <column md="3"></column>
+        <column md="6" class="text-left">
+          <p>Key: </p>
+          <p>{{ key}}</p>
+        </column>
+        <column md="3"></column>
       </row>
       <row>
-        <btn id="changepassbtn" class="z-depth-5" color="red"  @click.native="changePass()">Change Password</btn>
+        <column md="3"></column>
+        <column md="6">
+          <md-textarea id="emailtextarea" label="Emails" Placeholder="Emails" disabled></md-textarea>
+        </column>
+        <column md="3"></column>
+      </row>
+      <row>
+        <column md="3"></column>
+        <column md="6" class="text-left">
+          <btn id="deletebtn" class="z-depth-5" color="red" @click.native="deleteEmail()">Delete</btn>
+          <p class="sub">Choose an email you want to delete from the list</p>
+        </column>
+        <column md="3"></column>
+      </row>
+      <row>
+        <column md="3"></column>
+        <column md="4">
+          <md-input id="emailinput" label="New Email" Placeholder="New Email"></md-input>
+        </column>
+        <column md="2" className="align-self-center">
+          <btn id="addbtn" class="z-depth-5" color="red" @click.native="addEmail()">ADD</btn>
+        </column>
+        <column md="3"></column>
+      </row>
+      <row>
+        <column md="3"></column>
+        <column md="6" class="text-left">
+          <btn id="changepassbtn" class="z-depth-5" color="red" @click.native="changePass()">Change Password</btn>
+          <p class="sub">You will be prompted to enter your current and new password</p>
+        </column>
+        <column md="3"></column>
       </row>
       <!--features and users (home, small business, big business)-->
     </container>
@@ -17,56 +48,40 @@
 </template>
 
 <script>
-  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, MdTextarea, MdInput} from 'mdbvue';
+  import {
+    Row,
+    Column,
+    Container,
+    Fa,
+    Btn,
+    MdTextarea,
+    MdInput
+  } from 'mdbvue';
 
   export default {
-    name: 'Home',
+    name: 'Account',
     components: {
       MdTextarea,
       MdInput,
       Container,
-      Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle
+      Row, Column, Fa, Btn
+    },
+    data() {
+      return {
+        key: 'keytest'
+      }
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
+  .account {
+    margin-top: 70px;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  .card-img {
-    height: 500px;
-  }
-
-  .feat {
-    list-style-type: disc;
-    display: list-item;
-    alignment: left;
-    padding-left: 0pt;
-    list-style-position: inside;
-  }
-
-  .ulist {
-    width: 70%;
-    margin: auto;
-    alignment: left;
-    list-style-type:none;
-    padding-left: 0pt;
-  }
-
-  #keylabel {
-
+  .sub {
+    font-size: 12px;
+    color: #7f7f7f;
   }
 </style>
