@@ -1,49 +1,38 @@
 <template>
   <div class="Register">
-    <container>
+    <container style="margin-top: 10%; padding-left: 20%; padding-right: 20%;">
       <row>
-        <column></column>
-        <column>
-
-        </column>
-        <column></column>
+        <column><MdInput type="checkbox" id="checkbox1" label="Admin" /></column>
       </row>
 
       <row>
-        <column></column>
-        <column>
-          <MdInput v-model="user.Username" label="Username" icon="user-circle" placeholder="Username"/>
-        </column>
-        <column></column>
+        <column col="1"><fa icon="user-circle"/></column>
+        <column><MdInput v-model="user.Username" label="Username" placeholder="Username"/></column>
       </row>
 
       <row>
-        <column>
-          <MdInput v-model="user.Email" label="E-mail" icon="envelope" placeholder="E-mail"/>
-        </column>
+        <column col="1"><fa icon="envelope"/></column>
+        <column><MdInput v-model="user.Email" label="E-mail" placeholder="E-mail"/></column>
       </row>
 
       <row>
-        <column>
-          <MdInput v-model="user.Password" label="Password" icon="lock" placeholder="Password"/>
-        </column>
+        <column col="1"><fa icon="lock"/></column>
+        <column><MdInput v-model="user.Password" type="password" label="Password" placeholder="Password"/></column>
       </row>
 
       <row>
-        <MdInput v-model="user.PasswordConfirm" label="Confirm Password" icon="lock" placeholder="Password"/>
-      </row>
-
-      <row align="align-items-center">
-        <column>
-          <MdInput v-model="user.Code" label="Code" icon="Group" placeholder="Code"/>
-        </column>
+        <column col="1"><fa icon="lock"/></column>
+        <column><MdInput v-model="user.PasswordConfirm" type="password" label="Confirm Password" placeholder="Password"/></column>
       </row>
 
       <row>
-        <column>
-          <btn @click.native="Register()" label="Cancel"/>
-          <btn @click.native="Register()" label="Register"/>
-        </column>
+        <column col="1"><fa icon="group"/></column>
+        <column><MdInput v-model="user.Code" label="Code" placeholder="Code"/></column>
+      </row>
+
+      <row>
+        <column ><btn @click.native="Register()" color="danger">Cancel</btn></column>
+        <column ><btn @click.native="Register()" color="danger">Register</btn></column>
       </row>
     </container>
   </div>
@@ -98,7 +87,7 @@
           Email: '',
           Password: '',
           PasswordConfirm: '',
-          Code: 0,
+          Code: '',
           id: 0
         }
       }
@@ -143,3 +132,4 @@
     }
   }
 </script>
+
