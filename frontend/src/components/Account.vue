@@ -84,4 +84,8 @@
     font-size: 12px;
     color: #7f7f7f;
   }
+
+  .btn {
+    border-radius: 25px;
+  }
 </style>

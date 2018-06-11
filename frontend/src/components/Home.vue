@@ -8,7 +8,7 @@
           <p>Resin Trap is a user-friendly honeypot which allows you to secure your network from hackers. Day by day
             is the cyber criminality becoming more frequent. We have build this application in hope that we can better
             protect our clients data.</p>
-          <btn class="download" color="danger">Download
+          <btn class="download" color="red">Download
             <fa icon="download"/>
           </btn>
         </div>
@@ -182,6 +182,10 @@
     color: white;
   }
 
+  .btn {
+    border-radius: 25px;
+  }
+
   @media only screen and (max-width: 480px) {
     .hbody {
       left: 0;
@@ -199,6 +203,7 @@
     .download {
       display: none;
     }
+
   }
 
 </style>
