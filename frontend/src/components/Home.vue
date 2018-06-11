@@ -8,7 +8,7 @@
           <p>Resin Trap is a user-friendly honeypot which allows you to secure your network from hackers. Day by day
             is the cyber criminality becoming more frequent. We have build this application in hope that we can better
             protect our clients data.</p>
-          <btn class="download" color="red">Download
+          <btn class="download" color="red" @click.native="download()">Download
             <fa icon="download"/>
           </btn>
         </div>
@@ -136,12 +136,17 @@
 
 <script>
   import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle} from 'mdbvue';
-
+  import auth from '../auth'
   export default {
     name: 'Home',
     components: {
       Container,
       Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle
+    },
+    methods: {
+      download() {
+        auth.download()
+      }
     }
   }
 </script>

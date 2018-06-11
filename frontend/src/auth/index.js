@@ -28,6 +28,21 @@ export default {
       })
   },
 
+  async download() {
+    AXIOS({
+      url: '/download/resin',
+      method: 'GET',
+      responseType: 'blob', // important
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'resintrap.zip'); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    });
+  },
+
   signup(context, creds, redirect) {
     context.$http.post(SIGNUP_URL, creds, (data) => {
       localStorage.setItem('id_token', data.id_token)
