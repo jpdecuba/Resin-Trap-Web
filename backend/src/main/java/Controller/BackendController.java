@@ -1,5 +1,6 @@
 package Controller;
 
+import Shared.Logging.LogConnection;
 import Shared.Model.User;
 import Sockets.SocketClient;
 import org.springframework.core.io.InputStreamResource;
@@ -14,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import java.util.Set;
 
 @RestController()
 @RequestMapping("/api")
@@ -51,6 +54,22 @@ public class BackendController {
                 .contentType(MediaType.parseMediaType("application/zip"))
                 .body(resource);
 
+    }
+
+
+	@RequestMapping(path = "/logs", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	public @ResponseBody Set<LogConnection> Getlogs (@RequestBody User usr) {
+		Set<LogConnection> create = client.GetlogFiles(usr);
+		return create;
+	}
+
+    @RequestMapping(path = "/ChangePassword", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody boolean ChangePassword (@RequestBody User usr, String password) {
+
+        boolean bool = client.ChangePassword(password,usr.getId());
+        return bool;
     }
 
 }
