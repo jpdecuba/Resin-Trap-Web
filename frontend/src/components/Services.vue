@@ -17,7 +17,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="item in items">
+            <tr v-if="data" v-for="item in data">
               <td>{{item.Protocol}}</td>
               <td>{{item.IP}}</td>
               <td>{{item.Time}}</td>
@@ -84,6 +84,7 @@
     },
     data() {
       return {
+        data: '',
         showModal: false,
         Message: null,
         response: [],
@@ -99,8 +100,6 @@
     methods: {
 
     }
-
-
   }
 </script>
 
