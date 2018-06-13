@@ -2,6 +2,7 @@ package Controller;
 
 import Shared.Logging.LogConnection;
 import Shared.Model.User;
+import Shared.Model.UserRole;
 import Sockets.SocketClient;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -40,9 +41,25 @@ public class BackendController {
     @RequestMapping(path = "/register", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
-    Boolean registerNewUser(@RequestBody User usr) {
-        boolean create = client.Register(usr);
+    Boolean registerNewUser(@RequestBody User user) {
+        User u;
+        boolean create = false;
+        if (user.getRole() == UserRole.Admin) {
+            u = new User(user.getName(), user.getPassword(), UserRole.Admin);
+            u.addEmail(user.getMsgEmail().get(0));
+            create = client.Register(u);
+            System.out.println(create);
+            return create;
+        } else if (user.getRole() == UserRole.User) {
+            u = new User(user.getName(), user.getPassword(), UserRole.User, user.getCode());
+            u.addEmail(user.getMsgEmail().get(0));
+            create = client.Register(u);
+            System.out.println(create);
+            return create;
+        }
         return create;
+
+
     }
 
     @RequestMapping(path = "/download/resin", method = RequestMethod.GET)

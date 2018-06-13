@@ -1,6 +1,9 @@
 <template>
   <div class="Login">
     <container>
+      <div class="alert alert-danger" v-if="error">
+        <p>{{ error }}</p>
+      </div>
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
@@ -15,13 +18,10 @@
         </column>
         <column md="3"></column>
       </row>
-        <btn class="z-depth-5" color="red"  @click.native="login()">Login</btn>
+      <btn color="red" @click.native="login()">Login</btn>
       <router-link to="/Register">
-        <btn class="z-depth-5" color="red"  href="/Register">Register</btn>
+        <btn color="red">Register</btn>
       </router-link>
-      <div class="alert alert-danger" v-if="error">
-        <p>{{ error }}</p>
-      </div>
     </container>
   </div>
 </template>
@@ -68,7 +68,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .Login {
-    margin-top: 16%;
+    margin-top: 17%;
     min-height: 100%;
   }
 

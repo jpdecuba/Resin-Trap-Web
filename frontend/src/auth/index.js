@@ -43,26 +43,28 @@ export default {
     });
   },
 
-  signup(context, creds, redirect) {
-    context.$http.post(SIGNUP_URL, creds, (data) => {
-      localStorage.setItem('id_token', data.id_token)
-      localStorage.setItem('access_token', data.access_token)
+  signup(context, user) {
+    const User = {
+      name: user.Username,
+      password: user.Password,
+      msgEmail: [user.Email],
+      role: user.role,
+      code: user.Code
+    }
 
-      this.user.authenticated = true
-
-      if (redirect) {
-        router.go(redirect)
-      }
-
-    }).error((err) => {
-      context.error = err
-    })
+    AXIOS.post(`/register`, User)
+      .then(response => {
+        this.response = response.data;
+        if (response.data) {
+          router.push('/Login')
+        } else if (!response.data) {
+          context.error = 'Error while signing up'
+        }
+      })
   },
 
   // To log out, we just need to remove the token
   logout() {
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('access_token')
     this.user.authenticated = false
   },
 
