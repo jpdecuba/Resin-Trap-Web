@@ -81,5 +81,18 @@ export default {
     return {
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     }
+  },
+
+async GetServices(context, user) {
+  AXIOS.get(`/Services`, user)
+    .then(response => {
+      this.response = response.data;
+      if (response.data != '') {
+        context.data = response.data
+        router.push('/')
+      } else if (response.data == '') {
+        context.error = 'No Data!'
+      }
+    })
   }
 }
