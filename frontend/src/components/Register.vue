@@ -1,49 +1,33 @@
 <template>
   <div class="Register">
-    <container>
+    <container style="margin-top: 10%; padding-left: 20%; padding-right: 20%;">
       <row>
-        <column></column>
-        <column>
-
-        </column>
-        <column></column>
+        <column class="text-left"><MdInput v-model="admin" type="checkbox" label="Admin" /></column>
       </row>
 
       <row>
-        <column></column>
-        <column>
-          <MdInput v-model="user.Username" label="Username" icon="user-circle" placeholder="Username"/>
-        </column>
-        <column></column>
+        <column class="text-left"><MdInput v-model="user.Username" label="Username" icon="user-circle" Placeholder="Username"/></column>
       </row>
 
       <row>
-        <column>
-          <MdInput v-model="user.Email" label="E-mail" icon="envelope" placeholder="E-mail"/>
-        </column>
+        <column class="text-left"><MdInput v-model="user.Email" label="E-mail" icon="envelope"/></column>
       </row>
 
       <row>
-        <column>
-          <MdInput v-model="user.Password" label="Password" icon="lock" placeholder="Password"/>
-        </column>
+        <column class="text-left"><MdInput v-model="user.Password" type="password" label="Password" icon="lock"/></column>
       </row>
 
       <row>
-        <MdInput v-model="user.PasswordConfirm" label="Confirm Password" icon="lock" placeholder="Password"/>
-      </row>
-
-      <row align="align-items-center">
-        <column>
-          <MdInput v-model="user.Code" label="Code" icon="Group" placeholder="Code"/>
-        </column>
+        <column class="text-left"><MdInput v-model="user.PasswordConfirm" type="password" label="Confirm Password" icon="lock"/></column>
       </row>
 
       <row>
-        <column>
-          <btn @click.native="Register()" label="Cancel"/>
-          <btn @click.native="Register()" label="Register"/>
-        </column>
+        <column class="text-left"><MdInput v-model="user.Code" label="Code" icon="group"/></column>
+      </row>
+
+      <row class="mb-5">
+        <column ><btn @click.native="Register()" color="red">Cancel</btn></column>
+        <column ><btn @click.native="Register()" color="red">Register</btn></column>
       </row>
     </container>
   </div>
@@ -92,21 +76,23 @@
 
     data(){
       return{
+        admin: '',
         response:[],
         user:{
           Username: '',
           Email: '',
           Password: '',
           PasswordConfirm: '',
-          Code: 0,
+          Code: '',
           id: 0
         }
       }
     },
 
     methods:{
+
       Register(){
-        console.log("Test")
+        console.log(this.admin)
       },
 
       toggleDropdown(index) {
@@ -143,3 +129,8 @@
     }
   }
 </script>
+<style scoped>
+  .btn {
+    border-radius: 25px;
+  }
+</style>

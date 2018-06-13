@@ -158,6 +158,7 @@ public class SocketClient {
                 return Login(usr);
             }else {
                 failedAttempt  = 0;
+                //e.printStackTrace();
             }
 
         }
