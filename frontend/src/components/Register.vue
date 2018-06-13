@@ -2,7 +2,7 @@
   <div class="Register">
     <container style="margin-top: 10%; padding-left: 20%; padding-right: 20%;">
       <row>
-        <column class="text-left"><MdInput type="checkbox" id="checkbox1" label="Admin" /></column>
+        <column class="text-left"><MdInput v-model="admin" type="checkbox" label="Admin" /></column>
       </row>
 
       <row>
@@ -76,6 +76,7 @@
 
     data(){
       return{
+        admin: '',
         response:[],
         user:{
           Username: '',
@@ -89,8 +90,9 @@
     },
 
     methods:{
+
       Register(){
-        console.log("Test")
+        console.log(this.admin)
       },
 
       toggleDropdown(index) {
