@@ -37,12 +37,26 @@
       <row>
         <column md="3"></column>
         <column md="6" class="text-left">
-          <btn id="changepassbtn" class="z-depth-5" color="red" @click.native="changePass()">Change Password</btn>
+          <btn id="passPopupBtn" class="z-depth-5" color="red" @click.native="(showModal = true)(Message = 'Change password')">Change Password</btn>
           <p class="sub">You will be prompted to enter your current and new password</p>
         </column>
         <column md="3"></column>
       </row>
-      <!--features and users (home, small business, big business)-->
+
+      <modal v-if="showModal" @close="showModal = false">
+        <modal-header>
+          <modal-title>{{Message.Protocol}}</modal-title>
+        </modal-header>
+        <modal-body>{{Message.Message}}</modal-body>
+        <md-input v-model="user.password" id="newPass1" type="password" label="New password" icon="Key" Placeholder="New password"></md-input>
+        <md-input v-model="passConfirm" id="newPass2" type="password" label="Confirm new password" icon="Key" Placeholder="Confirm new password"></md-input>
+        <btn id="changepassbtn" class="z-depth-5" color="red" @click.native="changePass()">Confirm</btn>
+        <modal-footer>
+          <btn color="secondary" @click.native="showModal = false">Close</btn>
+        </modal-footer>
+      </modal>
+
+
     </container>
   </div>
 </template>
@@ -55,7 +69,12 @@
     Fa,
     Btn,
     MdTextarea,
-    MdInput
+    MdInput,
+    Modal,
+    ModalHeader,
+    ModalTitle,
+    ModalBody,
+    ModalFooter
   } from 'mdbvue';
 
   export default {
@@ -64,14 +83,38 @@
       MdTextarea,
       MdInput,
       Container,
-      Row, Column, Fa, Btn
+      Row, Column, Fa, Btn,
+      Modal,
+      ModalHeader,
+      ModalTitle,
+      ModalBody,
+      ModalFooter
     },
     data() {
       return {
-        key: 'keytest'
+        showModal: false,
+        Message: 'Change Password',
+        key: 'keytest',
+        user: {
+          password: '',
+          id: 0
+        },
+        passConfirm: ''
+      }
+    },
+
+    methods: {
+      changePass() {
+        if (this.user.password.equals(this.passConfirm)) {
+          auth.changePass(this,this.user.password)
+        } else {
+          this.error = 'The passwords do not match.'
+        }
       }
     }
+
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
