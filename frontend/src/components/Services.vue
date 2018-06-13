@@ -84,7 +84,7 @@
     },
     data() {
       return {
-        data,
+        data: '',
         showModal: false,
         Message: null,
         response: [],
