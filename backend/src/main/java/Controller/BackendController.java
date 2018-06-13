@@ -64,7 +64,7 @@ public class BackendController {
 		return create;
 	}
 
-    @RequestMapping(path = "/ChangePassword", method = RequestMethod.POST)
+    @RequestMapping(path = "/Account", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody boolean ChangePassword (@RequestBody User usr, String password) {
 
