@@ -48,8 +48,8 @@
           <modal-title>{{Message.Protocol}}</modal-title>
         </modal-header>
         <modal-body>{{Message.Message}}</modal-body>
-        <md-input id="newPass1" label="New password" Placeholder="New password"></md-input>
-        <md-input id="newPass2" label="Confirm new password" Placeholder="Confirm new password"></md-input>
+        <md-input v-model="user.password" id="newPass1" type="password" label="New password" icon="Key" Placeholder="New password"></md-input>
+        <md-input v-model="passConfirm" id="newPass2" type="password" label="Confirm new password" icon="Key" Placeholder="Confirm new password"></md-input>
         <btn id="changepassbtn" class="z-depth-5" color="red" @click.native="changePass()">Confirm</btn>
         <modal-footer>
           <btn color="secondary" @click.native="showModal = false">Close</btn>
