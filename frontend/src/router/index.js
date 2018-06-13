@@ -7,6 +7,7 @@ import Login from '@/components/Login'
 import Account from '@/components/Account'
 import Admin from '@/components/Admin'
 import Register from '@/components/Register'
+import Services from '@/components/Services'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/Register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/Services',
+      name: 'Services',
+      component: Services
     },
     { path: "*", component: PageNotFound }
   ]
