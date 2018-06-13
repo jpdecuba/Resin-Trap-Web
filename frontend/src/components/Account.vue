@@ -71,7 +71,20 @@
         key: 'keytest'
       }
     }
+
+    methods: {
+      changePass() {
+        if (this.user.username !== '' && this.user.password !== '') {
+          this.error = ''
+          auth.changePass(this,this.user.password)
+          auth.login(this, this.user.username, this.user.password)
+        } else {
+          this.error = 'Please fill all fields'
+        }
+      }
+    }
   }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
