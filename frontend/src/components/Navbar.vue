@@ -10,6 +10,7 @@
             <router-link class="dropdown-item" v-if="user.authenticated" to="/Login">Logout</router-link>
             <router-link class="dropdown-item" v-if="!user.authenticated" to="/Register">Register</router-link>
             <router-link class="dropdown-item" v-if="user.authenticated" to="/Account">Account</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" to="/Services">Services</router-link>
           </dropdown-menu>
         </dropdown>
       </navbar-nav>

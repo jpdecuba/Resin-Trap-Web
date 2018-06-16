@@ -32,10 +32,9 @@ public class BackendController {
     @RequestMapping(path = "/inlog", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
-    Boolean addNewUser(@RequestParam String username, @RequestParam String password) {
+    User addNewUser(@RequestParam String username, @RequestParam String password) {
         User user = client.Login(new User(username, password));
-        boolean check = (user != null);
-        return check;
+        return user;
     }
 
     @RequestMapping(path = "/register", method = RequestMethod.POST)
@@ -74,10 +73,10 @@ public class BackendController {
     }
 
 
-	@RequestMapping(path = "/logs", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	public @ResponseBody Set<LogConnection> Getlogs (@RequestBody User usr) {
-		Set<LogConnection> create = client.GetlogFiles(usr);
+    @RequestMapping(path = "/Logs", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+	public @ResponseBody Set<LogConnection> GetLogs (@RequestBody User user) {
+		Set<LogConnection> create = client.GetlogFiles(user);
 		return create;
 	}
 

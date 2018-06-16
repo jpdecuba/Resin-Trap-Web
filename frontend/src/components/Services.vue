@@ -18,10 +18,10 @@
             </thead>
             <tbody>
             <tr v-if="data" v-for="item in data">
-              <td>{{item.Protocol}}</td>
-              <td>{{item.IP}}</td>
-              <td>{{item.Time}}</td>
-              <td>{{item.Port}}</td>
+              <td>{{item.protocol}}</td>
+              <td>{{item.dstIP}}</td>
+              <td>{{item.date}}</td>
+              <td>{{item.dstPort}}</td>
               <td>
                 <btn color="mdb-color darken-3" @click.native="(showModal = true), (Message = item)">show</btn>
               </td>
@@ -33,9 +33,9 @@
 
       <modal v-if="showModal" @close="showModal = false">
         <modal-header>
-          <modal-title>{{Message.Protocol}}</modal-title>
+          <modal-title>{{Message.protocol}}</modal-title>
         </modal-header>
-        <modal-body>{{Message.Message}}</modal-body>
+        <modal-body><p v-for="log in Message.logRecords">{{log}}</p></modal-body>
         <modal-footer>
           <btn color="secondary" @click.native="showModal = false">Close</btn>
         </modal-footer>
@@ -63,7 +63,7 @@
     MdInput,
     MdTextarea
   } from 'mdbvue';
-  import {AXIOS} from './http-common'
+  import auth from '../auth'
 
   export default {
     name: 'Services',
@@ -85,6 +85,7 @@
     data() {
       return {
         data: '',
+        error: '',
         showModal: false,
         Message: null,
         response: [],
@@ -98,8 +99,13 @@
     },
 
     methods: {
-
-    }
+        getData() {
+          auth.GetServices(this)
+        }
+    },
+    beforeMount(){
+      this.getData()
+    },
   }
 </script>
 

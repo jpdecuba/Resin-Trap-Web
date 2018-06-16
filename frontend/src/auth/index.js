@@ -5,7 +5,8 @@ export default {
 
   user: {
     authenticated: false,
-    role: ''
+    role: '',
+    username: ''
   },
 
   // Send a request to the login URL and save the returned JWT
@@ -17,15 +18,17 @@ export default {
     AXIOS.post(`/inlog`, params)
       .then(response => {
         this.response = response.data;
-        if (response.data) {
-          // localStorage.setItem('id_token', data.id_token)
-          // localStorage.setItem('access_token', data.access_token)
+        if (response.data != '') {
           this.user.authenticated = true
+          this.user = response.data
           router.push('/')
-        } else if (!response.data) {
+          alert('Welcome ' + this.user.name)
+        } else {
           context.error = 'Username/Password incorrect!'
         }
-      })
+      }).catch(e => {
+      context.error = e.toString()
+    })
   },
 
   async download() {
@@ -41,7 +44,8 @@ export default {
       document.body.appendChild(link);
       link.click();
     });
-  },
+  }
+  ,
 
   signup(context, user) {
     const User = {
@@ -61,12 +65,15 @@ export default {
           context.error = 'Error while signing up'
         }
       })
-  },
+  }
+  ,
 
   // To log out, we just need to remove the token
   logout() {
     this.user.authenticated = false
-  },
+    this.user.username = ''
+  }
+  ,
 
   checkAuth() {
     var jwt = localStorage.getItem('id_token')
@@ -76,25 +83,29 @@ export default {
     else {
       this.user.authenticated = false
     }
-  },
+  }
+  ,
 
   // The object to be passed as a header for authenticated requests
   getAuthHeader() {
     return {
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     }
-  },
+  }
+  ,
 
-async GetServices(context, user) {
-  AXIOS.get(`/Services`, user)
-    .then(response => {
-      this.response = response.data;
-      if (response.data != '') {
-        context.data = response.data
-        router.push('/')
-      } else if (response.data == '') {
-        context.error = 'No Data!'
-      }
+  GetServices(context) {
+    AXIOS.post(`/Logs`, this.user)
+      .then(response => {
+        this.response = response.data;
+        if (response.data != '') {
+          context.data = response.data
+          console.log(context.data)
+        } else if (response.data == '') {
+          context.error = 'No Data!'
+        }
+      }).catch(e => {
+      context.error = e.toString()
     })
   }
 }
