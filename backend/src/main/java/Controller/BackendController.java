@@ -80,11 +80,11 @@ public class BackendController {
 		return create;
 	}
 
-    @RequestMapping(path = "/Account", method = RequestMethod.POST)
+    @RequestMapping(path = "/Account/Pass", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody boolean ChangePassword (@RequestBody User usr, String password) {
-
-        boolean bool = client.ChangePassword(password,usr.getId());
+    public @ResponseBody boolean ChangePassword (@RequestBody User usr) {
+        boolean bool = client.ChangePassword(usr.getPassword(),usr.getId());
+        System.out.println(bool);
         return bool;
     }
 

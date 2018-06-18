@@ -75,25 +75,6 @@ export default {
   }
   ,
 
-  checkAuth() {
-    var jwt = localStorage.getItem('id_token')
-    if (jwt) {
-      this.user.authenticated = true
-    }
-    else {
-      this.user.authenticated = false
-    }
-  }
-  ,
-
-  // The object to be passed as a header for authenticated requests
-  getAuthHeader() {
-    return {
-      'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-    }
-  }
-  ,
-
   GetServices(context) {
     AXIOS.post(`/Logs`, this.user)
       .then(response => {
@@ -103,6 +84,22 @@ export default {
           console.log(context.data)
         } else if (response.data == '') {
           context.error = 'No Data!'
+        }
+      }).catch(e => {
+      context.error = e.toString()
+    })
+  },
+
+  changePass(context, password) {
+    this.user.password = password
+
+    AXIOS.post(`/Account/Pass`, this.user)
+      .then(response => {
+        this.response = response.data;
+        if (response.data) {
+          alert('Password has been changed')
+        } else {
+          context.error = 'Password was not changed'
         }
       }).catch(e => {
       context.error = e.toString()
