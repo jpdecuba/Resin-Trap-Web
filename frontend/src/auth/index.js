@@ -2,11 +2,12 @@ import router from '../router/index'
 import {AXIOS} from '../components/http-common'
 
 export default {
-
   user: {
-    authenticated: false,
     role: '',
     username: ''
+  },
+  use: {
+    authenticated: false
   },
 
   // Send a request to the login URL and save the returned JWT
@@ -19,7 +20,7 @@ export default {
       .then(response => {
         this.response = response.data;
         if (response.data != '') {
-          this.user.authenticated = true
+          this.use.authenticated = true;
           this.user = response.data
           router.push('/')
           alert('Welcome ' + this.user.name)
@@ -70,7 +71,7 @@ export default {
 
   // To log out, we just need to remove the token
   logout() {
-    this.user.authenticated = false
+    this.use.authenticated = false
     this.user.username = ''
   }
   ,
@@ -104,5 +105,26 @@ export default {
       }).catch(e => {
       context.error = e.toString()
     })
+  },
+  addEmail(context, email) {
+    var params = new URLSearchParams();
+    params.append('id', this.user.id);
+    params.append('email', email);
+
+    AXIOS.post(`/Account/Email`, params)
+      .then(response => {
+        this.response = response.data;
+        if (response.data) {
+          this.user.msgEmail.push(email)
+          alert('Email has been added')
+        } else {
+          context.error = 'Password was not changed'
+        }
+      }).catch(e => {
+      context.error = e.toString()
+    })
+  },
+  goToLogin() {
+    router.push('/Login')
   }
 }

@@ -12,7 +12,7 @@
       <row>
         <column md="3"></column>
         <column md="6">
-          <md-textarea id="emailtextarea" label="Emails" Placeholder="Emails" disabled></md-textarea>
+          <md-textarea v-model="emails" id="emailtextarea" label="Emails" Placeholder="Emails"></md-textarea>
         </column>
         <column md="3"></column>
       </row>
@@ -27,7 +27,7 @@
       <row>
         <column md="3"></column>
         <column md="4">
-          <md-input id="emailinput" label="New Email" Placeholder="New Email"></md-input>
+          <md-input id="emailinput" v-model="email" label="New Email" Placeholder="New Email"></md-input>
         </column>
         <column md="2" className="align-self-center">
           <btn id="addbtn" class="z-depth-5" color="red" @click.native="addEmail()">ADD</btn>
@@ -113,7 +113,10 @@
         passConfirm: '',
         oldPass: '',
         error: '',
-        code: auth.user.code
+        error2: '',
+        code: auth.user.code,
+        emails: auth.user.msgEmail,
+        email: ''
       }
     },
 
@@ -129,14 +132,27 @@
         } else {
           this.error = 'Please fill all fields'
         }
+      },
+      addEmail() {
+        if (this.email != '') {
+          auth.addEmail(this, this.email)
+        } else {
+          this.error2 = 'Please fill an email address in'
+        }
+      },
+      checkAuth() {
+        if (!auth.use.authenticated) {
+          auth.goToLogin()
+        }
       }
-    }
-
+    },
+    beforeMount() {
+      this.checkAuth()
+    },
   }
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .account {
     margin-top: 70px;

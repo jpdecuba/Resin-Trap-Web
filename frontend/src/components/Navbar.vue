@@ -29,7 +29,7 @@
         active: {
           0: false
         },
-        user: auth.user
+        user: auth.use
       };
     },
     components: {

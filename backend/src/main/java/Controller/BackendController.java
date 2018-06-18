@@ -84,7 +84,13 @@ public class BackendController {
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody boolean ChangePassword (@RequestBody User usr) {
         boolean bool = client.ChangePassword(usr.getPassword(),usr.getId());
-        System.out.println(bool);
+        return bool;
+    }
+
+    @RequestMapping(path = "/Account/Email", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody boolean AddEmail (@RequestParam int id, @RequestParam String email) {
+        boolean bool = client.AddEmail(email, id);
         return bool;
     }
 
