@@ -28,12 +28,11 @@ public class LogSocket {
 
     private ResponseThread server;
 
-    //188.166.118.138
     public LogSocket(SocketObserver observer) {
         this.observer = observer;
 
             try {
-                this.Socket = (java.net.Socket) socketFactory.createSocket("188.166.118.138", 7677);
+                this.Socket = (java.net.Socket) socketFactory.createSocket("", 7677);
             } catch (IOException e) {
             }
 
@@ -169,7 +168,7 @@ public class LogSocket {
     public boolean ReConnect() {
         failedAttempt++;
         try {
-            this.Socket = (Socket) socketFactory.createSocket("188.166.118.138", 7677);
+            this.Socket = (Socket) socketFactory.createSocket("", 7677);
 
             output = new ObjectOutputStream(Socket.getOutputStream());
 
