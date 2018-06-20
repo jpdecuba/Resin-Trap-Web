@@ -7,10 +7,11 @@
           <dropdown-toggle @click.native="toggleDropdown(0)" tag="a" navLink color="danger-color-dark" waves-fixed><i class="fa fa-user-circle fa-lg"></i></dropdown-toggle>
           <dropdown-menu right v-show="active[0]">
             <router-link class="dropdown-item" v-if="!user.authenticated" to="/Login">Login</router-link>
-            <router-link class="dropdown-item" v-if="user.authenticated" to="/Login">Logout</router-link>
             <router-link class="dropdown-item" v-if="!user.authenticated" to="/Register">Register</router-link>
-            <router-link class="dropdown-item" v-if="user.authenticated" to="/Account">Account</router-link>
             <router-link class="dropdown-item" v-if="user.authenticated" to="/Services">Services</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" to="/Admin">Admin</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" to="/Account">Account</router-link>
+            <router-link class="dropdown-item" v-if="user.authenticated" @click.native="logout()" to="/Login">Logout</router-link>
           </dropdown-menu>
         </dropdown>
       </navbar-nav>

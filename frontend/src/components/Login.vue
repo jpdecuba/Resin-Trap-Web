@@ -7,14 +7,14 @@
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
-          <MdInput v-model="user.username" label="Username" icon="User" Placeholder="Username"/>
+          <MdInput v-model="user.username" label="Username" icon="User" Placeholder="Username" @keyup.native.enter="login()"/>
         </column>
         <column md="3"></column>
       </row>
       <row class="align-items-center justify-content-center">
         <column md="3"></column>
         <column md="6">
-          <md-input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password"/>
+          <md-input v-model="user.password" type="password" label="Password" icon="Key" Placeholder="Password" @keyup.native.enter="login()"/>
         </column>
         <column md="3"></column>
       </row>

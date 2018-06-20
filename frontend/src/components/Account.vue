@@ -1,7 +1,7 @@
 <template>
   <div class="account">
     <container>
-      <row>
+      <row style="margin-bottom: 20px">
         <column md="3"></column>
         <column md="6" class="text-left">
           <p>Key: </p>
@@ -11,12 +11,17 @@
       </row>
       <row>
         <column md="3"></column>
-        <column md="6">
-          <md-textarea v-model="emails" id="emailtextarea" label="Emails" Placeholder="Emails"></md-textarea>
+        <column md="6" class="text-left">
+          <dropdown v-if="emails !== ''" btn-group>
+            <dropdown-toggle @click.native="toggleDropdown(0)" color="red">{{selected}}</dropdown-toggle>
+            <dropdown-menu v-show="active[0]" class="collapse-item">
+              <dropdown-item v-for="mail in emails" @click.native="select(mail)">{{mail}}</dropdown-item>
+            </dropdown-menu>
+          </dropdown>
         </column>
         <column md="3"></column>
       </row>
-      <row>
+      <row style="margin-bottom: 20px">
         <column md="3"></column>
         <column md="6" class="text-left">
           <btn id="deletebtn" class="z-depth-5" color="red" @click.native="deleteEmail()">Delete</btn>
@@ -24,7 +29,7 @@
         </column>
         <column md="3"></column>
       </row>
-      <row>
+      <row style="margin-bottom: 20px">
         <column md="3"></column>
         <column md="4">
           <md-input id="emailinput" v-model="email" label="New Email" Placeholder="New Email"></md-input>
@@ -84,7 +89,11 @@
     ModalHeader,
     ModalTitle,
     ModalBody,
-    ModalFooter
+    ModalFooter,
+    Dropdown,
+    DropdownToggle,
+    DropdownItem,
+    DropdownMenu
   } from 'mdbvue';
   import auth from '../auth'
 
@@ -99,7 +108,11 @@
       ModalHeader,
       ModalTitle,
       ModalBody,
-      ModalFooter
+      ModalFooter,
+      DropdownItem,
+      DropdownMenu,
+      DropdownToggle,
+      Dropdown
     },
     data() {
       return {
@@ -116,7 +129,11 @@
         error2: '',
         code: auth.user.code,
         emails: auth.user.msgEmail,
-        email: ''
+        email: '',
+        active: {
+          0: false
+        },
+        selected: ''
       }
     },
 
@@ -140,14 +157,35 @@
           this.error2 = 'Please fill an email address in'
         }
       },
+      deleteEmail() {
+        auth.deleteEmail(this, this.selected)
+      }
+      ,
       checkAuth() {
         if (!auth.use.authenticated) {
           auth.goToLogin()
         }
+      },
+      toggleDropdown(index) {
+        for (let i = 0; i < Object.keys(this.active).length; i++) {
+          if (index !== i) {
+            this.active[i] = false;
+          }
+        }
+        this.active[index] = !this.active[index];
+      },
+      select(email) {
+        this.selected = email;
+      },
+      selector() {
+        this.selected = this.emails[0]
       }
     },
     beforeMount() {
       this.checkAuth()
+    },
+    mounted() {
+      this.selector()
     },
   }
 
@@ -155,7 +193,7 @@
 
 <style scoped>
   .account {
-    margin-top: 70px;
+    margin-top: 14%;
   }
 
   .sub {
@@ -165,5 +203,19 @@
 
   .btn {
     border-radius: 25px;
+  }
+
+  .dropdown-item:hover {
+    background-color: #CC0000 !important;
+  }
+
+  .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+    color: white !important;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .account {
+      margin-top: 20%;
+    }
   }
 </style>

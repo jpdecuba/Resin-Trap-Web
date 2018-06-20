@@ -1,17 +1,20 @@
 <template>
   <div class="home">
     <container>
-      <row class="mt-5"></row>>
-      <row class="align-items-center justify-content-center">Threats per Week</row>
+      <row class="mt-5"></row>
+      >
+      <row class="align-items-center justify-content-center">Threats per Day</row>
       <row class="align-items-center justify-content-center">
-        <column>
-          <line-chart :data="lineChartData" :options="lineChartOptions" id="lineChart" :width="900" :height="300"></line-chart>
+        <column md="12">
+          <line-chart v-if="data" :data="lineChartData" :options="lineChartOptions" id="lineChart" :width="900"
+                      :height="300"></line-chart>
         </column>
       </row>
       <row class="align-items-center justify-content-center">Threats by Protocol</row>
       <row class="align-items-center justify-content-center mb-5">
-        <column>
-          <bar-chart :data="barChartData" :options="barChartOptions" id="barChart" :width="900" :height="300"></bar-chart>
+        <column md="12">
+          <bar-chart v-if="data" :data="barChartData" :options="barChartOptions" id="barChart" :width="900"
+                     :height="300"></bar-chart>
         </column>
       </row>
     </container>
@@ -19,10 +22,25 @@
 </template>
 
 <script>
-  import {Row, Column, Container, Card, CardBody, CardText, Fa, CardImg, Btn, CardTitle, LineChart, BarChart} from 'mdbvue';
+  import {
+    Row,
+    Column,
+    Container,
+    Card,
+    CardBody,
+    CardText,
+    Fa,
+    CardImg,
+    Btn,
+    CardTitle,
+    LineChart,
+    BarChart
+  } from 'mdbvue';
+  import moment from 'moment';
+  import auth from '../auth'
 
   export default {
-    name: 'Home',
+    name: 'Admin',
     components: {
       Container,
       Row, Column, CardText, Card, CardBody, Fa, CardImg, Btn, CardTitle,
@@ -31,8 +49,10 @@
 
     data() {
       return {
+        name: 'Admin',
+        data:'',
         lineChartData: {
-          labels: ["Weeks", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52"],
+          labels: [],
           datasets: [
             {
               label: "Threats",
@@ -42,7 +62,7 @@
               pointStrokeColor: "#C00",
               pointHighlightFill: "#C00",
               pointHighlightStroke: "rgba(204, 0, 0, 1)",
-              data: [0, 59, 80, 81, 56, 55, 40, 50, 44, 49, 33, 22, 10, 8, 20, 15, 59, 60, 23, 56, 55, 40, 50, 44, 49, 33, 22, 10, 30, 20, 25, 59, 80, 81, 56, 55, 40, 50, 44, 49, 38, 22, 10, 8, 20, 15, 59, 80, 81, 56, 55, 40, 50, 44, 49]
+              data: []
             },
           ]
         },
@@ -68,7 +88,7 @@
           labels: ["MySQL", "FTP", "IRC", "SMTP"],
           datasets: [{
             label: "Threats",
-            data: [490, 745, 483, 621],
+            data: [],
             backgroundColor: [
               'rgba(204, 0, 0, 1)',
               'rgba(204, 0, 0, 1)',
@@ -104,6 +124,50 @@
           }
         }
       }
+    },
+    methods: {
+      days() {
+        for (var i = 30; i >= 0; i--) {
+          var currentDate = new Date();
+          var date = moment(String(currentDate)).subtract(i, 'days').format('DD MMMM');
+          this.lineChartData.labels.push(date)
+          var amount = this.logs(moment(String(currentDate)).subtract(i, 'days').format('YYYY-MM-DD'));
+          this.lineChartData.datasets[0].data.push(amount)
+        }
+      },
+      logs(date) {
+        var amount = 0;
+        for (var i = 0; i < this.data.length; i++) {
+          if (moment(date).isSame(this.data[i].date)) {
+            amount++
+          }
+        }
+        return amount;
+      },
+      getData() {
+        auth.GetServices(this)
+      },
+      bar() {
+        var MySQL = 0;
+        var FTP = 0;
+        var IRC = 0;
+        var SMTP = 0;
+        for (var i = 0; i < this.data.length; i++) {
+          if (this.data[i].protocol.toLowerCase().trim() === "mysql") {
+            MySQL++
+          } else if (this.data[i].protocol.toLowerCase().trim() === "ftp") {
+            FTP++
+          } else if (this.data[i].protocol.toLowerCase().trim() === "irc") {
+            IRC++
+          } else if (this.data[i].protocol.toLowerCase().trim() === "smtp") {
+            SMTP++
+          }
+        }
+        this.barChartData.datasets[0].data = [MySQL, FTP, IRC, SMTP]
+      }
+    },
+    created() {
+      this.getData();
     }
   }
 </script>
@@ -140,7 +204,7 @@
     width: 70%;
     margin: auto;
     alignment: left;
-    list-style-type:none;
+    list-style-type: none;
     padding-left: 0pt;
   }
 

@@ -94,4 +94,10 @@ public class BackendController {
         return bool;
     }
 
+    @RequestMapping(path = "/Account/EmailDel", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public @ResponseBody boolean DeleteEmail (@RequestParam int id, @RequestParam String email) {
+        boolean bool = client.DeleteEmail(email, id);
+        return bool;
+    }
 }

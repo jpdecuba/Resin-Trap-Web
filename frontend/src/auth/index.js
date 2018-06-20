@@ -72,17 +72,20 @@ export default {
   // To log out, we just need to remove the token
   logout() {
     this.use.authenticated = false
-    this.user.username = ''
+    this.user = ''
   }
   ,
 
-  GetServices(context) {
+  async GetServices(context) {
     AXIOS.post(`/Logs`, this.user)
       .then(response => {
         this.response = response.data;
         if (response.data != '') {
           context.data = response.data
-          console.log(context.data)
+          if (context.name == 'Admin') {
+            context.days()
+            context.bar()
+          }
         } else if (response.data == '') {
           context.error = 'No Data!'
         }
@@ -119,6 +122,25 @@ export default {
           alert('Email has been added')
         } else {
           context.error = 'Password was not changed'
+        }
+      }).catch(e => {
+      context.error = e.toString()
+    })
+  },
+  deleteEmail(context, email) {
+    var params = new URLSearchParams();
+    params.append('id', this.user.id);
+    params.append('email', email);
+
+    AXIOS.post(`/Account/EmailDel`, params)
+      .then(response => {
+        this.response = response.data;
+        if (response.data) {
+          this.user.msgEmail.splice(this.user.msgEmail.indexOf(email) ,1)
+          context.selector()
+          alert('Email has been deleted')
+        } else {
+          context.error = 'Email not deleted'
         }
       }).catch(e => {
       context.error = e.toString()
